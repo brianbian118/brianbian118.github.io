@@ -1,369 +1,279 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-language="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Brian Bian | 边城 — Academic Website</title>
-  <meta name="description" content="Personal academic website for Brian Bian (边城) — research, publications, and talks." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Chongyuan (Brian) Bian — PhD student in Electrical Engineering at the University of British Columbia. Research in human-centered AI, multimodal intelligence, and computer vision.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chongyuan (Brian) Bian | Research">
+  <meta property="og:description" content="Research in human-centered AI, multimodal intelligence, and computer vision.">
+  <title>Chongyuan (Brian) Bian | Research</title>
   <style>
-    :root{
-      --bg:#ffffff;--fg:#111827;--muted:#6b7280;--brand:#2563eb;--card:#f3f4f6;--border:#e5e7eb;--shadow:0 10px 25px rgba(0,0,0,.06);
+    :root {
+      --ink: #253047;
+      --strong: #142137;
+      --muted: #667286;
+      --line: #d9dfe7;
+      --link: #184e87;
+      --link-hover: #0f3358;
+      --paper: #ffffff;
+      --quiet: #f7f9fb;
+      --max: 920px;
     }
-    @media (prefers-color-scheme: dark){
-      :root{--bg:#0b0d12;--fg:#e5e7eb;--muted:#9ca3af;--brand:#60a5fa;--card:#111827;--border:#1f2937;--shadow:0 10px 25px rgba(0,0,0,.35)}
-      img{filter:brightness(0.95)}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5.2rem; }
+    body {
+      margin: 0; color: var(--ink); background: var(--paper);
+      font: 16px/1.75 -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--fg);}
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--border)}
-    @media (prefers-color-scheme: dark){header{background:rgba(11,13,18,.6)}}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;gap:.6rem;align-items:center;font-weight:700}
-    .brand .dot{width:10px;height:10px;border-radius:999px;background:var(--brand);display:inline-block}
-    .links{display:flex;gap:1rem;align-items:center}
-    .links a{font-weight:500;color:var(--fg);opacity:.85}
-    .links a.active{color:var(--brand)}
-    .lang-toggle{border:1px solid var(--border);background:transparent;padding:.45rem .7rem;border-radius:.6rem;font-weight:600;cursor:pointer}
-
-    main{padding:40px 0}
-    section{scroll-margin-top:90px}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
-    .p16{padding:16px}
-    .p24{padding:24px}
-    .muted{color:var(--muted)}
-    .pill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);padding:.35rem .6rem;border-radius:999px;background:rgba(0,0,0,0.02)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border:1px solid var(--border);background:var(--fg);color:var(--bg);padding:.7rem 1rem;border-radius:.8rem;font-weight:600;box-shadow:var(--shadow)}
-    .btn.secondary{background:transparent;color:var(--fg)}
-    .btn:hover{transform:translateY(-1px)}
-
-    .grid{display:grid;gap:16px}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    @media (max-width: 860px){
-      .hero{grid-template-columns:1fr}
-      .grid.cols-3{grid-template-columns:1fr}
-      .grid.cols-2{grid-template-columns:1fr}
+    a { color: var(--link); text-decoration: none; text-underline-offset: 3px; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
+    .wrap { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; }
+    .topbar { border-bottom: 1px solid var(--line); background: #fff; }
+    .topbar-inner { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .wordmark { font: 650 15px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; color: var(--strong); letter-spacing: .005em; }
+    .nav { display: flex; gap: 19px; align-items: center; flex-wrap: wrap; font-size: 13px; }
+    .nav a { color: var(--muted); }
+    .nav a:hover { color: var(--link); }
+    .language-toggle { border: 1px solid var(--line); background: #fff; color: var(--link); padding: 4px 9px; border-radius: 3px; font: inherit; cursor: pointer; white-space: nowrap; }
+    main { padding-top: 53px; }
+    .intro { display: grid; grid-template-columns: minmax(0,1fr) 182px; gap: 45px; align-items: start; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(31px, 4.4vw, 39px); font-weight: 500; letter-spacing: -.035em; line-height: 1.2; color: var(--strong); margin-bottom: 13px; }
+    .also { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; font-size: .5em; font-weight: 400; letter-spacing: 0; color: var(--muted); white-space: nowrap; }
+    .position { line-height: 1.6; margin-bottom: 12px; color: var(--strong); font-size: 15px; }
+    .intro p { margin-bottom: 12px; }
+    .contact { font-size: 14px; margin: 12px 0 15px; color: var(--muted); }
+    .contact a { margin-right: 12px; white-space: nowrap; }
+    .portrait { margin: 3px 0 0; width: 182px; }
+    .portrait img { display: block; width: 182px; height: 205px; object-fit: cover; border: 1px solid var(--line); background: var(--quiet); }
+    .portrait figcaption { font-size: 11px; color: var(--muted); text-align: center; padding-top: 7px; line-height: 1.5; }
+    .section { padding: 1px 0 2px; margin-top: 31px; }
+    .section h2 {
+      font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 500;
+      color: var(--strong); letter-spacing: -.01em; margin: 0 0 16px;
     }
-
-    .avatar{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid var(--border)}
-
-    .section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:20px 0 8px}
-    .section-title h2{margin:0;font-size:1.3rem}
-
-    .item{padding:14px;border-bottom:1px dashed var(--border)}
-    .item:last-child{border-bottom:none}
-    .item h3{margin:.1rem 0;font-size:1rem}
-    .meta{font-size:.9rem;color:var(--muted)}
-
-    footer{border-top:1px solid var(--border);padding:30px 0;margin-top:30px}
-
-    /* hash routing visibility */
-    .route{display:none}
-    .route.active{display:block}
-
-    /* video cards */
-    .video{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-    .video iframe,.video video{width:100%;height:100%;aspect-ratio:16/9;display:block}
-
-    /* small helpers */
-    .nowrap{white-space:nowrap}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-    /* code comment banner */
-    .tip{font-size:.9rem;border-left:3px solid var(--brand);padding:.6rem .8rem;background:rgba(37,99,235,.06);border-radius:6px}
-    @media (prefers-color-scheme: dark){.tip{background:rgba(96,165,250,.12)}}
+    .rule { height: 1px; border: 0; margin: 27px 0 0; background: var(--line); }
+    .section-lead { margin-bottom: 17px; }
+    .entry { display: grid; grid-template-columns: 158px minmax(0,1fr); gap: 23px; margin: 0 0 23px; }
+    .entry-label { font-size: 13px; color: var(--muted); padding-top: 3px; line-height: 1.6; }
+    h3 { font-size: 16px; line-height: 1.45; color: var(--strong); font-weight: 650; margin-bottom: 5px; }
+    .entry p { margin-bottom: 6px; }
+    .small { font-size: 14px; line-height: 1.7; }
+    .muted { color: var(--muted); }
+    .inline-links a + a::before { content: " · "; color: #8893a3; display: inline-block; margin: 0 5px; }
+    .pub-note { max-width: 680px; }
+    .research-focus { padding: 15px 19px; border-left: 2px solid #b8cce2; background: var(--quiet); margin: 0 0 22px; }
+    .research-focus p { margin: 0; }
+    .simple-list { list-style: none; margin: 0; padding: 0; }
+    .simple-list li { margin: 0 0 10px; }
+    .simple-list strong { color: var(--strong); font-weight: 650; }
+    footer { border-top: 1px solid var(--line); margin-top: 45px; padding: 20px 0 28px; color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    html[data-language="en"] .zh { display: none !important; }
+    html[data-language="zh"] .en { display: none !important; }
+    @media (max-width: 700px) {
+      .wrap { width: min(calc(100% - 36px), var(--max)); }
+      .topbar-inner { padding: 14px 0; align-items: flex-start; flex-direction: column; gap: 11px; }
+      .nav { gap: 13px; font-size: 12px; }
+      main { padding-top: 32px; }
+      .intro { grid-template-columns: minmax(0,1fr) 112px; gap: 18px; }
+      .portrait, .portrait img { width: 112px; }
+      .portrait img { height: 139px; }
+      .portrait figcaption { font-size: 10px; }
+      .entry { grid-template-columns: 1fr; gap: 2px; }
+      .entry-label { padding-top: 0; margin-bottom: 3px; }
+      h1 { font-size: 29px; }
+      .also { display: block; font-size: 15px; padding-top: 6px; }
+      .section h2 { font-size: 22px; }
+    }
+    @media (max-width: 420px) {
+      .intro { grid-template-columns: 1fr 92px; gap: 13px; }
+      .portrait, .portrait img { width: 92px; }
+      .portrait img { height: 111px; }
+      .position { font-size: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav" role="navigation" aria-label="Primary">
-      <div class="brand">
-        <span class="dot" aria-hidden="true"></span>
-        <a href="#home" style="color:inherit;text-decoration:none">Brian Bian <span class="muted">/ 边城</span></a>
-      </div>
-      <nav class="links">
-        <a href="#home" data-nav="home" class="active" data-i18n="nav_home">Home</a>
-        <a href="#publications" data-nav="publications" data-i18n="nav_pubs">Publications</a>
-        <a href="#talks" data-nav="talks" data-i18n="nav_talks">Talks</a>
-        <button class="lang-toggle" id="langBtn" aria-label="Toggle language">中文</button>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="wordmark" href="#top" aria-label="Back to top">Chongyuan Bian</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#about"><span class="en">About</span><span class="zh">简介</span></a>
+        <a href="#research"><span class="en">Research</span><span class="zh">研究</span></a>
+        <a href="#projects"><span class="en">Projects</span><span class="zh">项目</span></a>
+        <a href="#outputs"><span class="en">Publications</span><span class="zh">论文</span></a>
+        <a href="#teaching"><span class="en">Teaching</span><span class="zh">教学</span></a>
+        <button type="button" id="language-toggle" class="language-toggle" aria-label="Switch language">中文</button>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <!-- HOME -->
-    <section id="home" class="route active">
-      <div class="hero">
-        <div class="grid">
-          <div class="card p24">
-            <div class="pill" style="margin-bottom:10px">
-              <span>UBC Okanagan</span>
-              <span class="muted">|</span>
-              <span data-i18n="role">PhD Student, Electrical Engineering</span>
-            </div>
-            <h1 style="margin:.2rem 0 0.8rem" data-i18n="name">Hi, I'm Brian (边城).</h1>
-            <p class="muted" data-i18n="tagline">
-              I build multimodal AI systems for gesture‑to‑intent understanding and stable visual assistants. I also work on physically‑based rendering (PBRT‑v4) and measured BSDF for cloth/optics.
-            </p>
-            <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:16px 0 6px">
-              <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <span aria-hidden>🔗</span> <span>LinkedIn</span>
-              </a>
-              <a class="btn secondary" href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub">
-                <span aria-hidden>💻</span> <span>GitHub</span>
-              </a>
-              <a class="btn" href="assets/Brian_Bian_CV.pdf" download>
-                <span aria-hidden>📄</span> <span data-i18n="download_cv">Download CV</span>
-              </a>
-              <a class="btn secondary" href="mailto:you@example.com">
-                <span aria-hidden>✉️</span> <span>you@example.com</span>
-              </a>
-            </div>
-          </div>
-          <div class="grid cols-2">
-            <div class="card p16">
-              <h2 class="section-title" data-i18n="about_title">About</h2>
-              <p data-i18n="about_text">
-                I'm a PhD student at UBC Okanagan advised by Prof. Kenneth Chau. My research spans multimodal LLMs (vision, audio, gesture), long‑horizon stability of visual assistants, and physics‑guided rendering of textiles.
-              </p>
-              <p class="tip" data-i18n="about_tip">
-                Tip: Edit all texts inside this single file or connect a Markdown loader later. See comments in the source for where to customize.
-              </p>
-            </div>
-            <div class="card p16">
-              <h2 class="section-title" data-i18n="ongoing_title">Ongoing Research</h2>
-              <div class="item">
-                <h3 data-i18n="og1_title">Gesture → Intent Multimodal Pipeline</h3>
-                <div class="meta" data-i18n="og1_meta">LLaVA‑based visual assistant; 360° camera; edge vs cloud</div>
-              </div>
-              <div class="item">
-                <h3 data-i18n="og2_title">Measured BSDF for Fabrics</h3>
-                <div class="meta" data-i18n="og2_meta">FDTD/FDFD‑to‑PBRT pipeline; tensor BSDF; cloth optics</div>
-              </div>
-              <div class="item">
-                <h3 data-i18n="og3_title">Any‑Precision Quantization on MLLMs</h3>
-                <div class="meta" data-i18n="og3_meta">Qwen2.5‑VL; ViT + Decoder; latency/accuracy trade‑offs</div>
-              </div>
-            </div>
-          </div>
+  <main class="wrap" id="top">
+    <section class="intro" id="about" aria-labelledby="name">
+      <div>
+        <h1 id="name">Chongyuan Bian <span class="also">(Brian)</span></h1>
+        <p class="position">
+          <span class="en">PhD Student in Electrical Engineering</span>
+          <span class="zh">电气工程博士生</span><br>
+          <a href="https://ok.ubc.ca/" target="_blank" rel="noopener noreferrer">University of British Columbia, Okanagan</a>
+        </p>
+        <p class="contact">
+          <a href="https://github.com/brianbian118" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <!-- Add verified Google Scholar, CV, LinkedIn, and academic email links when ready. -->
+        </p>
+        <div class="en">
+          <p>I am a PhD student at the University of British Columbia, advised by Prof. Kenneth Chau. My research explores how artificial intelligence can understand human behavior and intention through multimodal perception, contextual reasoning, and long-horizon interaction.</p>
+          <p>My broader goal is to build AI systems that understand people naturally, rather than requiring people to learn how to interact with machines. I also work on computer vision, material appearance understanding, and physically based rendering.</p>
         </div>
-        <div class="p24">
-          <img class="avatar" src="assets/photo.jpg" alt="Portrait of Brian Bian (边城)" loading="lazy" />
+        <div class="zh">
+          <p>我目前在英属哥伦比亚大学（UBC Okanagan）攻读电气工程博士学位，导师为 Kenneth Chau 教授。我的研究关注人工智能如何通过多模态感知、情境推理和长时交互，理解人类行为与意图。</p>
+          <p>我的长期目标是探索能够自然理解人的 AI 系统，而不是要求人适应机器的交互方式。我也从事计算机视觉、材质外观理解和基于物理的渲染相关研究。</p>
         </div>
       </div>
+      <figure class="portrait">
+        <img src="https://avatars.githubusercontent.com/u/101506179?v=4" alt="GitHub profile image for Chongyuan Bian" width="182" height="205" loading="eager">
+        <figcaption><span class="en">Profile photo can be updated.</span><span class="zh">可替换为正式学术照片。</span></figcaption>
+      </figure>
+    </section>
 
-      <div style="margin-top:28px" class="card p24">
-        <div class="section-title">
-          <h2 data-i18n="highlights_title">Highlights</h2>
+    <hr class="rule">
+    <section class="section" id="research" aria-labelledby="research-heading">
+      <h2 id="research-heading"><span class="en">Research</span><span class="zh">研究方向</span></h2>
+      <div class="research-focus">
+        <p class="en"><strong>Central question.</strong> How can AI reliably infer human intentions from observable evidence, represent context over time, and know when the evidence is insufficient?</p>
+        <p class="zh"><strong>核心研究问题。</strong> AI 如何根据可观察证据可靠地理解人的意图、持续表征环境与情境，并识别证据尚不足以支持判断的情况？</p>
+      </div>
+      <div class="entry">
+        <div class="entry-label">01 / <span class="en">Human-centered AI</span><span class="zh">以人为中心的 AI</span></div>
+        <div>
+          <h3><span class="en">Nonverbal Intention Understanding</span><span class="zh">非语言意图理解</span></h3>
+          <p class="en">Studying how multimodal systems interpret gesture, action, social behavior, and contextual cues to reason about what people intend to do.</p>
+          <p class="zh">研究多模态系统如何结合手势、动作、社会行为与情境线索，推断人类行为背后的意图。</p>
         </div>
-        <div class="grid cols-3">
-          <div class="item">
-            <h3 data-i18n="hl1_h">Multimodal Assistant</h3>
-            <div class="meta" data-i18n="hl1_t">24/7 stable vision assistant for smart‑home control</div>
-          </div>
-          <div class="item">
-            <h3 data-i18n="hl2_h">Rendering & Optics</h3>
-            <div class="meta" data-i18n="hl2_t">Custom PBRT‑v4 measured BSDF for cloth</div>
-          </div>
-          <div class="item">
-            <h3 data-i18n="hl3_h">Open‑source</h3>
-            <div class="meta" data-i18n="hl3_t">Repos & datasets coming soon (watch GitHub)</div>
-          </div>
+      </div>
+      <div class="entry">
+        <div class="entry-label">02 / <span class="en">Multimodal intelligence</span><span class="zh">多模态智能</span></div>
+        <div>
+          <h3><span class="en">Context, Memory &amp; Long-Horizon Interaction</span><span class="zh">情境、记忆与长时交互</span></h3>
+          <p class="en">Exploring persistent representations of people, events, and environments, with particular attention to temporal consistency and evidence-grounded reasoning.</p>
+          <p class="zh">探索人物、事件与环境的持续表征，重点关注时间一致性以及有证据支持的推理。</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-label">03 / <span class="en">Computer vision</span><span class="zh">计算机视觉</span></div>
+        <div>
+          <h3><span class="en">Visual Material Understanding</span><span class="zh">视觉材质理解</span></h3>
+          <p class="en">Investigating image-based material retrieval, appearance representations, and physically meaningful evaluation of visual similarity.</p>
+          <p class="zh">研究基于图像的材质检索、外观表征，以及具有物理意义的视觉相似性评估。</p>
         </div>
       </div>
     </section>
 
-    <!-- PUBLICATIONS -->
-    <section id="publications" class="route">
-      <div class="section-title">
-        <h2 data-i18n="pubs_title">Publications</h2>
-        <div class="muted" data-i18n="pubs_note">Selected papers. Full list on Google Scholar.</div>
+    <hr class="rule">
+    <section class="section" id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading"><span class="en">Selected Research &amp; Projects</span><span class="zh">代表性研究与项目</span></h2>
+      <p class="section-lead small muted en">Selected academic and applied work. Technical details, datasets, and code are shared only when permitted for public release.</p>
+      <p class="section-lead small muted zh">以下为部分学术与应用研究。技术细节、数据和代码仅在获得公开许可后展示。</p>
+
+      <div class="entry">
+        <div class="entry-label"><span class="en">Ongoing doctoral research</span><span class="zh">博士研究 · 进行中</span></div>
+        <div>
+          <h3><span class="en">Multimodal Reasoning for Human Intention</span><span class="zh">面向人类意图的多模态推理</span></h3>
+          <p class="en">Research on integrating visual observations and contextual evidence for more reliable interpretation of human behavior, including uncertainty and longer-term context.</p>
+          <p class="zh">研究如何整合视觉观察与情境证据，更可靠地理解人类行为，同时考虑判断的不确定性与长期情境信息。</p>
+        </div>
       </div>
-
-      <div class="card p24">
-        <!-- Repeat .item for each paper -->
-        <article class="item">
-          <h3>
-            <span>Gesture‑to‑Intent Reasoning in Multimodal Dialogue Systems</span>
-          </h3>
-          <div class="meta">B. Bian, et al. <span class="nowrap">(2025)</span> — arXiv preprint</div>
-          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
-            <a class="btn secondary" href="#" target="_blank" rel="noopener">PDF</a>
-            <a class="btn secondary" href="#" target="_blank" rel="noopener">Code</a>
-            <a class="btn secondary" href="#" target="_blank" rel="noopener">BibTeX</a>
-          </div>
-        </article>
-
-        <article class="item">
-          <h3>
-            <span>Any‑Precision Quantization for Qwen‑VL‑2.5</span>
-          </h3>
-          <div class="meta">B. Bian, et al. <span class="nowrap">(2025)</span> — under review</div>
-          <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem">
-            <a class="btn secondary" href="#" target="_blank" rel="noopener">PDF</a>
-            <a class="btn secondary" href="#" target="_blank" rel="noopener">Code</a>
-            <a class="btn secondary" href="#" target="_blank" rel="noopener">BibTeX</a>
-          </div>
-        </article>
-
-        <!-- Add more items as needed -->
+      <div class="entry">
+        <div class="entry-label"><span class="en">Applied computer vision</span><span class="zh">应用计算机视觉</span></div>
+        <div>
+          <h3><span class="en">Appearance-Based Material Retrieval</span><span class="zh">基于外观的材质检索</span></h3>
+          <p class="en">Developing and evaluating methods for retrieving material identity from visual observations, while studying the distinction between learned visual similarity and physical appearance.</p>
+          <p class="zh">开发并评估从视觉观察中检索材质身份的方法，研究学习到的视觉相似性与真实物理外观之间的差异。</p>
+        </div>
       </div>
-
-      <div class="tip" style="margin-top:14px" data-i18n="pubs_tip">
-        Tip: Add your papers as repeated <article class="item"> blocks. Link to arXiv/PDF/Code. Keep titles in their original language.
+      <div class="entry">
+        <div class="entry-label"><span class="en">Interactive AI prototype</span><span class="zh">交互式 AI 原型</span></div>
+        <div>
+          <h3><span class="en">Gesture-Aware Visual Assistant</span><span class="zh">手势感知视觉助手</span></h3>
+          <p class="en">A prototype connecting hand-motion perception to context-aware interaction for accessible, natural control of everyday environments.</p>
+          <p class="zh">通过手部动作感知与情境交互相结合，探索对日常环境更自然、更易使用的控制方式。</p>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-label"><span class="en">Rendering &amp; optics</span><span class="zh">渲染与光学</span></div>
+        <div>
+          <h3><span class="en">Physically Based Fabric Appearance</span><span class="zh">基于物理的织物外观建模</span></h3>
+          <p class="en">Investigating the relationship between light transport, measured material response, and photorealistic rendering of textiles.</p>
+          <p class="zh">探索光传输、实测材质响应以及织物真实感渲染之间的关系。</p>
+        </div>
       </div>
     </section>
 
-    <!-- TALKS -->
-    <section id="talks" class="route">
-      <div class="section-title">
-        <h2 data-i18n="talks_title">Talks & Videos</h2>
-        <div class="muted" data-i18n="talks_note">Invited talks, demos, and class lectures.</div>
-      </div>
-
-      <div class="grid cols-2">
-        <div class="video card">
-          <!-- Example YouTube embed -->
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Talk Title" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="video card">
-          <!-- Example local MP4 -->
-          <video controls preload="metadata" poster="assets/talk_poster.jpg">
-            <source src="assets/talk_sample.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
-
-      <div class="tip" style="margin-top:14px" data-i18n="talks_tip">
-        Tip: Replace the YouTube ID or point the <video> source to your hosted mp4 file. Thumbnails go in /assets.
-      </div>
+    <hr class="rule">
+    <section class="section" id="outputs" aria-labelledby="outputs-heading">
+      <h2 id="outputs-heading"><span class="en">Publications &amp; Research Outputs</span><span class="zh">论文与研究成果</span></h2>
+      <p class="pub-note en">A verified list of peer-reviewed papers and publicly released manuscripts will be added here. Ongoing and submitted work is not presented as published research.</p>
+      <p class="pub-note zh">这里将陆续添加经过核实的同行评审论文及已公开稿件。正在进行或已投稿的研究不会被误标为已发表成果。</p>
+      <!-- Replace the note above with complete, confirmed citations and valid URLs before announcing publication records. -->
     </section>
+
+    <hr class="rule">
+    <section class="section" id="teaching" aria-labelledby="teaching-heading">
+      <h2 id="teaching-heading"><span class="en">Teaching</span><span class="zh">教学经历</span></h2>
+      <ul class="simple-list">
+        <li><strong>2026 · University of British Columbia</strong><br>
+          <span class="en">Teaching Assistant, APSC 169 — Engineering Design</span>
+          <span class="zh">助教，APSC 169 — 工程设计</span>
+        </li>
+        <li><strong>2026 · University of British Columbia</strong><br>
+          <span class="en">Teaching Assistant, ENGR 499 — Capstone Design</span>
+          <span class="zh">助教，ENGR 499 — 毕业设计</span>
+        </li>
+      </ul>
+    </section>
+
+    <hr class="rule">
+    <section class="section" id="background" aria-labelledby="background-heading">
+      <h2 id="background-heading"><span class="en">Background &amp; Collaboration</span><span class="zh">教育背景与合作</span></h2>
+      <ul class="simple-list">
+        <li><strong><span class="en">2025–present:</span><span class="zh">2025 年至今：</span></strong>
+          <span class="en">PhD, Electrical Engineering, University of British Columbia.</span>
+          <span class="zh">英属哥伦比亚大学，电气工程博士。</span>
+        </li>
+        <li><strong>2023:</strong>
+          <span class="en">BSc, Simon Fraser University.</span>
+          <span class="zh">西蒙菲莎大学，本科学位。</span>
+        </li>
+      </ul>
+      <p class="small muted en">I also contribute to research and software projects in academic and industrial settings. Organization-specific details will be included after affiliation wording and public-disclosure permissions are verified.</p>
+      <p class="small muted zh">我也参与高校与产业环境中的研究及软件系统项目。具体合作机构和项目成果将在核实合作身份措辞及公开权限后补充。</p>
+    </section>
+
+    <footer>
+      <span>© <span id="year">2026</span> Chongyuan (Brian) Bian</span>
+      <span><span class="en">Hosted on GitHub Pages · Last revised October 2026</span><span class="zh">由 GitHub Pages 托管 · 2026 年 10 月更新</span></span>
+    </footer>
   </main>
 
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
-      <div>
-        <strong>© <span id="year"></span> Brian Bian</strong>
-        <span class="muted"> · UBC Okanagan · Kelowna, BC</span>
-      </div>
-      <div class="muted">
-        <span data-i18n="footer_note">Built with ❤️, hosted on GitHub Pages.</span>
-      </div>
-    </div>
-  </footer>
-
   <script>
-    // ---- Minimal hash router (Home / Publications / Talks)
-    const routes = ["home","publications","talks"];
-    function setRoute(hash){
-      const r = (hash||"#home").replace('#','');
-      routes.forEach(id=>{
-        const el = document.getElementById(id);
-        if(el){ el.classList.toggle('active', id===r); }
-        const nav = document.querySelector(`[data-nav="${id}"]`);
-        if(nav){ nav.classList.toggle('active', id===r); }
+    (() => {
+      const root = document.documentElement;
+      const toggle = document.getElementById("language-toggle");
+      const year = document.getElementById("year");
+      year.textContent = new Date().getFullYear();
+      toggle.addEventListener("click", () => {
+        const next = root.getAttribute("data-language") === "en" ? "zh" : "en";
+        root.setAttribute("data-language", next);
+        root.setAttribute("lang", next === "zh" ? "zh-CN" : "en");
+        toggle.textContent = next === "en" ? "中文" : "English";
+        toggle.setAttribute("aria-label", next === "en" ? "Switch to Chinese" : "切换为英文");
       });
-    }
-    window.addEventListener('hashchange',()=>setRoute(location.hash));
-    setRoute(location.hash);
-
-    // ---- Language i18n (English default -> 中文)
-    const i18n = {
-      en: {
-        nav_home:"Home", nav_pubs:"Publications", nav_talks:"Talks",
-        role:"PhD Student, Electrical Engineering",
-        name:"Hi, I'm Brian (边城).",
-        tagline:"I build multimodal AI systems for gesture‑to‑intent understanding and stable visual assistants. I also work on physically‑based rendering (PBRT‑v4) and measured BSDF for cloth/optics.",
-        about_title:"About", about_text:"I'm a PhD student at UBC Okanagan advised by Prof. Kenneth Chau. My research spans multimodal LLMs (vision, audio, gesture), long‑horizon stability of visual assistants, and physics‑guided rendering of textiles.", about_tip:"Tip: Edit all texts inside this single file or connect a Markdown loader later. See comments in the source for where to customize.",
-        ongoing_title:"Ongoing Research",
-        og1_title:"Gesture → Intent Multimodal Pipeline", og1_meta:"LLaVA‑based visual assistant; 360° camera; edge vs cloud",
-        og2_title:"Measured BSDF for Fabrics", og2_meta:"FDTD/FDFD‑to‑PBRT pipeline; tensor BSDF; cloth optics",
-        og3_title:"Any‑Precision Quantization on MLLMs", og3_meta:"Qwen2.5‑VL; ViT + Decoder; latency/accuracy trade‑offs",
-        highlights_title:"Highlights",
-        hl1_h:"Multimodal Assistant", hl1_t:"24/7 stable vision assistant for smart‑home control",
-        hl2_h:"Rendering & Optics", hl2_t:"Custom PBRT‑v4 measured BSDF for cloth",
-        hl3_h:"Open‑source", hl3_t:"Repos & datasets coming soon (watch GitHub)",
-        download_cv:"Download CV",
-        pubs_title:"Publications", pubs_note:"Selected papers. Full list on Google Scholar.", pubs_tip:"Tip: Add your papers as repeated <article class=\"item\"> blocks. Link to arXiv/PDF/Code. Keep titles in their original language.",
-        talks_title:"Talks & Videos", talks_note:"Invited talks, demos, and class lectures.", talks_tip:"Tip: Replace the YouTube ID or point the <video> source to your hosted mp4 file. Thumbnails go in /assets.",
-        footer_note:"Built with ❤️, hosted on GitHub Pages."
-      },
-      zh: {
-        nav_home:"首页", nav_pubs:"发表", nav_talks:"演讲",
-        role:"电气工程博士生 (PhD Student, Electrical Engineering)",
-        name:"你好，我是边城（Brian）。",
-        tagline:"我专注于多模态人工智能（multimodal AI），让系统通过手势/动作理解人类意图，并构建长时稳定运行的视觉助手（visual assistant）。同时研究PBRT‑v4物理渲染与织物的测量型BSDF（measured BSDF）。",
-        about_title:"关于我", about_text:"我在UBC奥肯那根校区（UBCO）攻读电气工程博士，导师为Kenneth Chau教授。研究方向覆盖多模态大模型（视觉/音频/手势）、视觉助手的长时稳定性，以及面向织物的物理渲染（physics‑guided rendering）。", about_tip:"提示：你可以直接在这个单文件中编辑文字；或后续接入Markdown生成静态内容。",
-        ongoing_title:"正在进行的研究",
-        og1_title:"手势→意图（Gesture→Intent）多模态管线", og1_meta:"基于LLaVA的视觉助手；360°全景相机；边缘/云协同",
-        og2_title:"织物测量型BSDF（Measured BSDF）", og2_meta:"FDTD/FDFD到PBRT的数据管线；张量BSDF；布料光学",
-        og3_title:"面向MLLM的任意精度量化", og3_meta:"Qwen2.5‑VL；ViT+解码器；延迟/精度权衡",
-        highlights_title:"亮点",
-        hl1_h:"多模态助手", hl1_t:"面向智能家居的24/7稳定视觉助手",
-        hl2_h:"渲染与光学", hl2_t:"自定义PBRT‑v4织物measured BSDF",
-        hl3_h:"开源", hl3_t:"代码与数据即将上线（欢迎关注GitHub）",
-        download_cv:"下载简历",
-        pubs_title:"学术发表", pubs_note:"部分论文展示，完整列表请见Google Scholar。", pubs_tip:"提示：每篇论文用一个<article class=\"item\">区块，附上PDF/代码/BibTeX链接。",
-        talks_title:"报告与视频", talks_note:"受邀报告、演示与课程讲座。", talks_tip:"提示：替换YouTube视频ID，或使用本地/自托管的MP4文件。",
-        footer_note:"本页由 ❤️ 驱动，托管于 GitHub Pages。"
-      }
-    };
-
-    function applyLang(lang){
-      const dict = i18n[lang] || i18n.en;
-      document.documentElement.lang = (lang==='zh'?'zh-CN':'en');
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(dict[key]) el.textContent = dict[key];
-      });
-      const btn = document.getElementById('langBtn');
-      btn.textContent = lang==='zh' ? 'EN' : '中文';
-      localStorage.setItem('lang', lang);
-    }
-
-    const saved = localStorage.getItem('lang') || (navigator.language.startsWith('zh')?'zh':'en');
-    applyLang(saved);
-    document.getElementById('langBtn').addEventListener('click',()=>{
-      const next = (localStorage.getItem('lang')==='zh')?'en':'zh';
-      applyLang(next);
-    });
-
-    // year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    })();
   </script>
-
-  <!--
-  ===============================
-  Quick Start (GitHub Pages)
-  ===============================
-  1) Create a repo named: your-username.github.io
-  2) Add this file as index.html at the repo root.
-  3) Create /assets folder with:
-     - photo.jpg (your portrait)
-     - Brian_Bian_CV.pdf (your resume)
-     - talk_poster.jpg (optional)
-     - talk_sample.mp4 (optional)
-  4) Commit & push. Your site will be live at https://your-username.github.io
-
-  Content Editing:
-  - Replace links for LinkedIn/GitHub/email/CV.
-  - Update the Publications section by duplicating <article class="item"> blocks.
-  - Update Talks by swapping YouTube IDs or MP4 sources.
-  - Edit bilingual strings in the i18n dictionary above (en / zh).
-
-  Notes:
-  - Single-file site with hash routing (#home #publications #talks) for easy maintenance.
-  - Accessible, responsive, light/dark via prefers-color-scheme.
-  - To expand later, move sections into separate HTML files and share the same CSS/JS.
-  -->
 </body>
 </html>
